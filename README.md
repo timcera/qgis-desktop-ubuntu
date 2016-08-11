@@ -1,8 +1,8 @@
-docker-qgis-desktop-debian
+docker-qgis-desktop-ubuntu
 ==========================
 
 Instead of compiling, this image is a "apt-get install" from
-http://qgis.org/debian of the latest QGIS.
+http://qgis.org/ubuntugis of the latest QGIS.
 
 This also includes installation of gdal-bin and python-gdal.
 
@@ -11,7 +11,7 @@ This also includes installation of gdal-bin and python-gdal.
 ## Use the docker repository:
 
 ```
-docker pull timcera/qgis-desktop-debian:latest
+docker pull timcera/qgis-desktop-ubuntu:latest
 ```
 
 Required Manual Installation
@@ -36,7 +36,7 @@ docker run --rm \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=unix$DISPLAY \
     -e HHHOME=${HOME} \
-    timcera/qgis-desktop-debian:latest
+    timcera/qgis-desktop-ubuntu:latest
 ```
 
 Be sure to make the "qgis" script (or whatever you called your script) an executable.
