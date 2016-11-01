@@ -8,7 +8,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
 
 RUN    apt-get -y update
-RUN    apt-get -y install qgis python-qgis qgis-plugin-grass
+RUN    apt-get -y install qgis python-qgis qgis-plugin-grass grass grass-doc grass-gui
 RUN    apt-get -y install python-requests python-numpy python-pandas python-scipy python-matplotlib
 
 RUN    apt-get clean \
