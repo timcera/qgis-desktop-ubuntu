@@ -5,6 +5,8 @@ RUN echo "deb     http://qgis.org/ubuntugis artful main\n" >> /etc/apt/sources.l
 RUN echo "deb-src http://qgis.org/ubuntugis artful main\n" >> /etc/apt/sources.list
 RUN echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu artful main\n" >> /etc/apt/sources.list
 
+RUN    apt-get -y install dirmngr
+
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
