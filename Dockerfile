@@ -1,8 +1,8 @@
 FROM ubuntu:xenial
 MAINTAINER Tim Cera <tim@cerazone.net>
 
-RUN echo "deb     http://qgis.org/ubuntugis xenial main\n" >> /etc/apt/sources.list
-RUN echo "deb-src http://qgis.org/ubuntugis xenial main\n" >> /etc/apt/sources.list
+RUN echo "deb     http://qgis.org/debian xenial main\n" >> /etc/apt/sources.list
+RUN echo "deb-src http://qgis.org/debian xenial main\n" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
@@ -12,7 +12,7 @@ RUN    apt-get -y install python-requests python-numpy python-pandas python-scip
 
 # For TauDEM
 RUN    apt-get -y install libopenmpi-dev
-RUN    apt-get -y install build-essential g++
+RUN    apt-get -y install build-essential g++ wget
 
 RUN    apt-get clean \
     && apt-get purge
