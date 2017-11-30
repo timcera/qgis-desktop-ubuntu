@@ -1,13 +1,8 @@
-FROM ubuntu:artful
+FROM ubuntu:xenial
 MAINTAINER Tim Cera <tim@cerazone.net>
 
-RUN echo "deb     http://qgis.org/ubuntugis artful main\n" >> /etc/apt/sources.list
-RUN echo "deb-src http://qgis.org/ubuntugis artful main\n" >> /etc/apt/sources.list
-RUN echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu artful main\n" >> /etc/apt/sources.list
-
-RUN    apt-get -y update
-RUN    apt-get -y install dirmngr
-
+RUN echo "deb     http://qgis.org/ubuntugis xenial main\n" >> /etc/apt/sources.list
+RUN echo "deb-src http://qgis.org/ubuntugis xenial main\n" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
