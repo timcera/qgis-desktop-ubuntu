@@ -18,7 +18,7 @@ RUN    apt-get clean \
     && apt-get purge
 
 # Download and build taudem
-RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/TauDEM/tarball \
+RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball \
     | tar -xzC /usr/src \
     # Remove the TestSuite directory because it contains large files
     # that we don't need.
