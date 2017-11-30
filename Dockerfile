@@ -1,13 +1,15 @@
-FROM ubuntu:xenial
+FROM ubuntu:artful
 MAINTAINER Tim Cera <tim@cerazone.net>
 
-RUN echo "deb     http://qgis.org/ubuntugis xenial main\n" >> /etc/apt/sources.list
-RUN echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main\n" >> /etc/apt/sources.list
+RUN echo "deb     http://qgis.org/ubuntugis artful main\n" >> /etc/apt/sources.list
+RUN echo "deb-src http://qgis.org/ubuntugis artful main\n" >> /etc/apt/sources.list
+RUN echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu artful main\n" >> /etc/apt/sources.list
+
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 RUN    apt-get -y update
-RUN    apt-get -y install libgdal-dev=2.2.1 gdal-bin=2.2.1 qgis python-qgis qgis-plugin-grass grass 
+RUN    apt-get -y install libgdal-dev gdal-bin qgis python-qgis qgis-plugin-grass grass 
 RUN    apt-get -y install python-requests python-numpy python-pandas python-scipy python-matplotlib
 
 # For TauDEM
