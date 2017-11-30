@@ -7,9 +7,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 RUN    apt-get -y update
-RUN    apt-get -y install libgdal-dev gdal-bin
+RUN    apt-get -y install libgdal-dev=2.2.1 gdal-bin=2.2.1 qgis python-qgis qgis-plugin-grass grass 
 RUN    apt-get -y install python-requests python-numpy python-pandas python-scipy python-matplotlib
-RUN    apt-get -y install qgis python-qgis qgis-plugin-grass grass 
 
 # For TauDEM
 RUN    apt-get -y install libopenmpi-dev
