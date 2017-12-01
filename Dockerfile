@@ -25,7 +25,8 @@ RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball/master \
     && rm -rf /usr/src/dtarb-TauDEM-*/TestSuite \
     && cd /usr/src/dtarb-TauDEM-*/src \
     && rm -f Makefile makefile \
-    && sed -i 's/OGR_F_GetFieldAsInteger64/OGR_F_GetFieldAsInteger/g' ReadOutlets.cpp \
+    && sed -i -e 's/OGR_F_GetFieldAsInteger64/OGR_F_GetFieldAsInteger/g' \
+              -e 's/OFTInteger64/OFTInteger/g' ReadOutlets.cpp \
     && cmake . \ 
     && make \
     && make clean
