@@ -12,7 +12,7 @@ RUN    apt-get -y install python-requests python-numpy python-pandas python-scip
 
 # For TauDEM
 RUN    apt-get -y install libopenmpi-dev
-RUN    apt-get -y install build-essential g++ wget
+RUN    apt-get -y install build-essential g++ wget cmake
 
 RUN    apt-get clean \
     && apt-get purge
@@ -24,6 +24,7 @@ RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball/master \
     # that we don't need.
     && rm -rf /usr/src/dtarb-TauDEM-*/TestSuite \
     && cd /usr/src/dtarb-TauDEM-*/src \
+    && cmake . \
     && make \
     && make clean
 RUN ln -s /usr/src/dtarb-TauDEM-* /opt/taudem
