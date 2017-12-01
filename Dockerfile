@@ -22,11 +22,11 @@ RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball \
     | tar -xzC /usr/src \
     # Remove the TestSuite directory because it contains large files
     # that we don't need.
-    && rm -rf /usr/src/TauDEM-*/TestSuite \
-    && cd /usr/src/TauDEM-*/src \
+    && rm -rf /usr/src/dtarb-TauDEM-*/TestSuite \
+    && cd /usr/src/dtarb-TauDEM-*/src \
     && make \
     && make clean
-RUN ln -s /usr/src/TauDEM-* /opt/taudem
+RUN ln -s /usr/src/dtarb-TauDEM-* /opt/taudem
 ENV PATH /opt/taudem:$PATH
 
 # Called when the Docker image is started in the container
