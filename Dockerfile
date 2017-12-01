@@ -24,6 +24,7 @@ RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball/master \
     # that we don't need.
     && rm -rf /usr/src/dtarb-TauDEM-*/TestSuite \
     && cd /usr/src/dtarb-TauDEM-*/src \
+    && rm -f Makefile makefile \
     && cmake . \
     && make \
     && make clean
