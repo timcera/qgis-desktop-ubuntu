@@ -29,9 +29,10 @@ RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball/master \
               -e 's/OFTInteger64/OFTInteger/g' ReadOutlets.cpp \
     && cmake . \ 
     && make \
-    && make clean
-RUN ln -s /usr/src/dtarb-TauDEM-* /opt/taudem
-ENV PATH /opt/taudem:$PATH
+    && make install
+RUN rm -rf /usr/src/dtarb-TauDEM-*
+ENV PATH /usr/local/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
