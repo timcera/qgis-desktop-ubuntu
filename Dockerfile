@@ -16,7 +16,7 @@ RUN    apt-get -y install python-requests   \
                           python-pandas     \
                           python-scipy      \
                           python-matplotlib \
-                          python-qt4
+                          python-pyside.qtwebkit
 
 RUN    apt-get -y install dirmngr
 RUN echo "deb     http://qgis.org/debian zesty main" >> /etc/apt/sources.list
