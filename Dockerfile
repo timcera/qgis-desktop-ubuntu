@@ -28,7 +28,7 @@ RUN    apt-get -y install libgdal-dev       \
                           gdal-bin          \
                           qgis              \
                           python-qgis       \
-                          qgis-plugin-grass \
+                          qgis-provider-grass \
                           grass
 
 RUN    apt-get clean \
