@@ -9,9 +9,7 @@ RUN echo "deb-src http://qgis.org/debian xenial main" >> /etc/apt/sources.list
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
-# RUN    apt-get -y install tzdata
-# RUN echo "America/New_York" > /etc/timezone
-# RUN dpkg-reconfigure -f noninteractive tzdata
+RUN    apt-get -y update
 
 # For TauDEM
 RUN    apt-get -y install libopenmpi-dev
