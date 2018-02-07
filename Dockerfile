@@ -1,17 +1,17 @@
-FROM ubuntu:bionic
+FROM ubuntu:artful
 MAINTAINER Tim Cera <tim@cerazone.net>
 
 RUN    apt-get -y update
 
 RUN    apt-get -y install dirmngr
-RUN echo "deb     http://qgis.org/debian bionic main" >> /etc/apt/sources.list
-RUN echo "deb-src http://qgis.org/debian bionic main" >> /etc/apt/sources.list
+RUN echo "deb     http://qgis.org/debian artful main" >> /etc/apt/sources.list
+RUN echo "deb-src http://qgis.org/debian artful main" >> /etc/apt/sources.list
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
-RUN    apt-get -y install tzdata
-RUN echo "America/New_York" > /etc/timezone
-RUN dpkg-reconfigure -f noninteractive tzdata
+# RUN    apt-get -y install tzdata
+# RUN echo "America/New_York" > /etc/timezone
+# RUN dpkg-reconfigure -f noninteractive tzdata
 
 # For TauDEM
 RUN    apt-get -y install libopenmpi-dev
