@@ -1,4 +1,4 @@
-FROM ubuntu:zesty
+FROM ubuntu:bionic
 MAINTAINER Tim Cera <tim@cerazone.net>
 
 RUN    apt-get -y update
@@ -19,8 +19,8 @@ RUN    apt-get -y install python-requests   \
                           python-pyside.qtwebkit
 
 RUN    apt-get -y install dirmngr
-RUN echo "deb     http://qgis.org/debian zesty main" >> /etc/apt/sources.list
-RUN echo "deb-src http://qgis.org/debian zesty main" >> /etc/apt/sources.list
+RUN echo "deb     http://qgis.org/debian bionic main" >> /etc/apt/sources.list
+RUN echo "deb-src http://qgis.org/debian bionic main" >> /etc/apt/sources.list
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
