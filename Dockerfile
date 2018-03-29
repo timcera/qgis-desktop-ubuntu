@@ -5,13 +5,15 @@ MAINTAINER Tim Cera <tim@cerazone.net>
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-## pre-seed tzdata
-RUN printf 'tzdata tzdata/Areas select America\ntzdata tzdata/Zones/America select New_York\n' \
-    | dpkg --set-selections && \
-    rm /etc/timezone && \
-    rm /etc/localtime && \
+ENV TZ America/New_York
+
+RUN echo $TZ > /etc/timezone && \
     apt-get update && \
-    apt-get install -y tzdata
+    apt-get install -y tzdata && \
+    rm /etc/localtime && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get clean
 
 RUN    apt-get -y update
 
