@@ -1,6 +1,18 @@
 FROM ubuntu:bionic
 MAINTAINER Tim Cera <tim@cerazone.net>
 
+## for apt to be noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
+## pre-seed tzdata
+RUN printf 'tzdata tzdata/Areas select America\ntzdata tzdata/Zones/America select New_York\n' \
+    | sudo dpkg-set-selections && \
+    rm /etc/timezone && \
+    rm /etc/localtime && \
+    apt-get update && \
+    apt-get install -y tzdata
+
 RUN    apt-get -y update
 
 RUN    apt-get -y install dirmngr
@@ -53,6 +65,9 @@ RUN wget -qO- https://api.github.com/repos/dtarb/TauDEM/tarball/master \
 RUN rm -rf /usr/src/dtarb-TauDEM-*
 ENV PATH /usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
+
+## cleanup of files from setup
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
