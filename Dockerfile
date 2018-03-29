@@ -7,7 +7,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 
 ## pre-seed tzdata
 RUN printf 'tzdata tzdata/Areas select America\ntzdata tzdata/Zones/America select New_York\n' \
-    | dpkg-set-selections && \
+    | dpkg --set-selections && \
     rm /etc/timezone && \
     rm /etc/localtime && \
     apt-get update && \
