@@ -19,6 +19,9 @@ RUN    apt-get -y install dirmngr \
                           apt-transport-https
 RUN    echo "deb     https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
 RUN    echo "deb-src https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
+RUN    echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main " >> /etc/apt/sources.list
+RUN    echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main " >> /etc/apt/sources.list
+
 RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 RUN    apt-get -y update
