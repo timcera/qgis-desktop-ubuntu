@@ -39,12 +39,7 @@ RUN    apt-get -y install python-requests   \
                           python-pyside.qtwebkit
 
 # QGIS
-RUN    apt-get -y install libgdal-dev         \
-                          gdal-bin            \
-                          qgis                \
-                          python-qgis         \
-                          qgis-provider-grass \
-                          grass
+RUN    apt-get -y install qgis
 
 RUN    apt-get clean \
     && apt-get purge
