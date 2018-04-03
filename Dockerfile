@@ -30,20 +30,24 @@ RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 
 # Python
-RUN    apt-get -y update                                                 \
-    && apt-get -y install --no-install-recommends python-requests        \
-                                                  python-numpy           \
-                                                  python-pandas          \
-                                                  python-scipy           \
-                                                  python-matplotlib      \
-                                                  python-pyside.qtwebkit \
-                                                  gdal-bin               \
-                                                  qgis                   \
-                                                  python-qgis            \
-                                                  qgis-provider-grass    \
-                                                  grass                  \
-    && apt-get clean                                                     \
-    && apt-get purge                                                     \
+RUN    apt-get -y update                             \
+    && apt-get clean                                 \
+    && apt-get purge                                 \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get -y install --no-install-recommends python-requests        \
+                                               python-numpy           \
+                                               python-pandas          \
+                                               python-scipy           \
+                                               python-matplotlib      \
+                                               python-pyside.qtwebkit \
+                                               gdal-bin               \
+                                               qgis                   \
+                                               python-qgis            \
+                                               qgis-provider-grass    \
+                                               grass                  \
+    && apt-get clean                                                  \
+    && apt-get purge                                                  \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Called when the Docker image is started in the container
