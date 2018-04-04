@@ -17,6 +17,8 @@ RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 
 ENV TZ America/New_York
 
+# Need to have apt-transport-https in-place before drawing from
+# https://qgis.org
 RUN    echo $TZ > /etc/timezone                                       \
     && apt-get -y update                                              \
     && apt-get -y install --no-install-recommends tzdata              \
@@ -25,7 +27,11 @@ RUN    echo $TZ > /etc/timezone                                       \
     && rm /etc/localtime                                              \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                 \
     && dpkg-reconfigure -f noninteractive tzdata                      \
-    && apt-get -y install --no-install-recommends python-requests        \
+    && apt-get clean                                                  \
+    && apt-get purge                                                  \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN    apt-get -y install --no-install-recommends python-requests        \
                                                   python-numpy           \
                                                   python-pandas          \
                                                   python-scipy           \
