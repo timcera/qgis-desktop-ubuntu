@@ -16,7 +16,7 @@ RUN    echo $TZ > /etc/timezone                                              \
                                                   apt-transport-https        \
                                                   python-software-properties \
                                                   software-properties-common \
-    && add-apt-repository ppa:ubuntugis/ppa                                  \
+    && add-apt-repository ppa:ubuntugis/ubuntugis-unstable                   \
     && rm /etc/localtime                                                     \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                        \
     && dpkg-reconfigure -f noninteractive tzdata                             \
