@@ -5,16 +5,6 @@ MAINTAINER Tim Cera <tim@cerazone.net>
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-RUN    echo "deb     https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
-RUN    echo "deb-src https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
-RUN    echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" >> /etc/apt/sources.list
-RUN    echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" >> /etc/apt/sources.list
-
-# Key for qgis ubuntugis
-RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
-# Key for ubuntugis
-RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
-
 ENV TZ America/New_York
 
 # Need to have apt-transport-https in-place before drawing from
@@ -30,6 +20,16 @@ RUN    echo $TZ > /etc/timezone                                       \
     && apt-get clean                                                  \
     && apt-get purge                                                  \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN    echo "deb     https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
+RUN    echo "deb-src https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
+RUN    echo "deb     http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" >> /etc/apt/sources.list
+RUN    echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" >> /etc/apt/sources.list
+
+# Key for qgis ubuntugis
+RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
+# Key for ubuntugis
+RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 
 RUN    apt-get -y install --no-install-recommends python-requests        \
                                                   python-numpy           \
