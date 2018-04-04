@@ -9,27 +9,25 @@ ENV TZ America/New_York
 
 # Need to have apt-transport-https in-place before drawing from
 # https://qgis.org
-RUN    echo $TZ > /etc/timezone                                       \
-    && apt-get -y update                                              \
-    && apt-get -y install --no-install-recommends tzdata              \
-                                                  dirmngr             \
-                                                  apt-transport-https \
-    && rm /etc/localtime                                              \
-    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                 \
-    && dpkg-reconfigure -f noninteractive tzdata                      \
-    && apt-get clean                                                  \
-    && apt-get purge                                                  \
+RUN    echo $TZ > /etc/timezone                                              \
+    && apt-get -y update                                                     \
+    && apt-get -y install --no-install-recommends tzdata                     \
+                                                  dirmngr                    \
+                                                  apt-transport-https        \
+                                                  python-software-properties \
+    && add-apt-repository ppa:ubuntugis/ppa                                  \
+    && rm /etc/localtime                                                     \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                        \
+    && dpkg-reconfigure -f noninteractive tzdata                             \
+    && apt-get clean                                                         \
+    && apt-get purge                                                         \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN    echo "deb     https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
 RUN    echo "deb-src https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources.list
-RUN    echo "deb     http://ppa.launchpad.net/ubuntugis/ppa/ubuntu xenial main" >> /etc/apt/sources.list
-RUN    echo "deb-src http://ppa.launchpad.net/ubuntugis/ppa/ubuntu xenial main" >> /etc/apt/sources.list
 
 # Key for qgis ubuntugis
 RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
-# Key for ubuntugis
-RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 089EBE08314DF160
 
 RUN    apt-get -y update                                                 \
     && apt-get -y install --no-install-recommends python-requests        \
