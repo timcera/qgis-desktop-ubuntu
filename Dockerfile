@@ -15,6 +15,7 @@ RUN    echo $TZ > /etc/timezone                                              \
                                                   dirmngr                    \
                                                   apt-transport-https        \
                                                   python-software-properties \
+                                                  software-properties-common \
     && add-apt-repository ppa:ubuntugis/ppa                                  \
     && rm /etc/localtime                                                     \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                        \
